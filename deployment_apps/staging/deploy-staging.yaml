@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: landing-web
+  namespace: staging
+  labels:
+    name: landing-web
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: landing-web
+  template:
+    metadata:
+      name: landing-web
+      labels:
+        name: landing-web
+    spec:
+      containers:
+        - name: pesbuk-web
+          image: indragiri21/landing:latest
+          ports:
+            - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: landing-env-service
+  namespace: staging
+spec:
+  selector:
+    name: landing-web
+  ports:
+    - port: 80
+      targetPort: 80
+
+---
+
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: landing-ingress
+  namespace: staging
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: yogi-staging.yogitechlab.my.id
+    http:
+      paths:
+      #- path: /
+      - backend:
+          serviceName: landing-env-service
+          servicePort: 80
