@@ -8,3 +8,6 @@ Big Project Devops Cilsy Batch 5 membuat infrastructure as a code dengan menggun
 - Ansible : Untuk mengautomasi konfigurasi manajemen.
 - Logging : Menggunakan EFK ( Elastic search, Fluentd , dan Kibana).
 - Monitoring Infrastruktur : Menggunakan Prometheus dan Grafana.
+
+
+## Slide presentasi [Slide Presentasi go Here](https://docs.google.com/presentation/d/1DF4zS0THWtqfJvzQWdNeYXMTe-SQ4kX7lFrTGj_Ou3I/edit?usp=sharing).
